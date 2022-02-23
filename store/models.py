@@ -3,6 +3,9 @@ from django.db import models
 from django.urls import reverse
 
 class Category(models.Model):
+    '''
+    model of store category
+    '''
     name = models.CharField(max_length=300,db_index=True)
     slug = models.SlugField(max_length=300, unique=True)
 
@@ -17,6 +20,9 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
+    '''
+    model of store product
+    '''
     category = models.ForeignKey(Category,related_name="product",on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="product_creator")
     title = models.CharField(max_length=300)
