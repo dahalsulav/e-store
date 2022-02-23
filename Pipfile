@@ -8,6 +8,7 @@ django = "==4.0"
 pillow = "*"
 coverage = "*"
 flake8 = "*"
+isort = "*"
 
 [dev-packages]
 

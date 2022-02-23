@@ -25,7 +25,7 @@ class TestViewResponse(TestCase):
         '''
         testing allowed hosts
         '''
-        response = self.c.get('/')
+        response = self.c.get('/',HTTP_HOST='127.0.0.1')
         self.assertEqual(response.status_code, 200)
 
     def test_homepage(self):
@@ -33,7 +33,7 @@ class TestViewResponse(TestCase):
         response = all_products(request)
         # html = response.content.decode('utf8')
         # print(html)
-        # self.assertIn('<title>Home</title>',html)
+        # self.assertIn('<title>BookStore</title>',html)
         # self.assertTrue(html.startswith('\n<!DOCTYPE html>\n'))
         self.assertEqual(response.status_code,200)
 
@@ -58,6 +58,6 @@ class TestViewResponse(TestCase):
         response = all_products(request)
         # html = response.content.decode('utf8')
         # print(html)
-        # self.assertIn('<title>Home</title>',html)
+        # self.assertIn('<title>BookStore</title>',html)
         # self.assertTrue(html.startswith('\n<!DOCTYPE html>\n'))
         self.assertEqual(response.status_code, 200)
