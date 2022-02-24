@@ -5,7 +5,8 @@ from store.models import Product
 from cart.cart import Cart
 
 def cart_summary(request):
-    return render(request,'store/cart/summary.html')
+    cart = Cart(request)
+    return render(request,'store/cart/summary.html',{'cart':cart})
 
 def cart_add(request):
     cart = Cart(request)
@@ -13,7 +14,8 @@ def cart_add(request):
         product_id = int(request.POST.get('productid'))
         product_qty = int(request.POST.get('productqty'))
         product = get_object_or_404(Product, id=product_id)
+        cartqty = cart.__len__()
         cart.add(product=product, qty=product_qty)
-        response = JsonResponse({'qty':product_qty})
+        response = JsonResponse({'qty':cartqty})
         return response
 
